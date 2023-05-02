@@ -8,9 +8,9 @@ const Chipss = () => {
                     <div className={Styles.name}>Chipssssss</div>
                     <div className={Styles.filter}>
                         <button className={`${Styles.filbtn} ${Styles.shadow}`}>All</button>
-                        <button className={`${Styles.filbtn}`} $>Salt</button>
-                        <button className={`${Styles.filbtn}`} $>Peeper</button>
-                        <button className={`${Styles.filbtn}`} $>S & P</button>
+                        <button className={`${Styles.filbtn}`} >Salt</button>
+                        <button className={`${Styles.filbtn}`} >Peeper</button>
+                        <button className={`${Styles.filbtn}`} >S & P</button>
                     </div>
                 </div>
                 <div className={Styles.grid}>
