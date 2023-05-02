@@ -17,6 +17,7 @@
   font-family: "MonumentExtended-Ultrabold";
   border-style: solid;
   border-color: #000000;
+  color: black;
 }
 
 .grid1 {
@@ -39,6 +40,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1rem;
+  color: black;
 }
 
 .btn2 {
@@ -53,6 +55,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1rem;
+  color: black;
 }
 
 .herobtn {
@@ -63,6 +66,7 @@
 .herotxt {
   font-size: 3rem;
   text-align: center;
+  color: black;
 }
 
 .grid2 {

@@ -61,12 +61,16 @@
   font-family: 'Poppins';
   font-size: 1.5rem;
   font-weight: 900;
+  color: black;
 }
 
 .navclose {
   position: absolute;
   top: 0.5rem;
   right: 1rem;
+}
+.name{
+  color: black;
 }
 
 .mobile {
@@ -93,6 +97,7 @@
   box-shadow: 6px 7px 0px #000000;
   border-radius: 12px;
   justify-content: center;
+  color: black;
 }
 
 .ham {

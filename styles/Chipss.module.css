@@ -20,6 +20,7 @@
 .name {
   font-family: "MonumentExtended-Ultrabold";
   font-size: 4rem;
+  color: black;
 }
 
 .filter {
@@ -37,6 +38,7 @@
   border: 3px solid #000000;
   padding: 1rem;
   font-size: 1.5rem;
+  color: black;
 }
 
 .shadow {
@@ -51,6 +53,7 @@
   font-family: "MonumentExtended-Ultrabold";
   padding: 1rem;
   font-size: 1.2rem;
+  color: black;
 }
 .card {
   background: #a06fff;
@@ -79,7 +82,9 @@
 .cardimg {
   width: 10rem;
 }
-
+.chipname{
+  color: black;
+}
 @media screen and (max-width: 1300px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
