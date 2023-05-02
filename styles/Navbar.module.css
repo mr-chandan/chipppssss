@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
+
+.nav {
+  max-width: 100vw;
+  max-height: 6rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  background: #fffff4;
+  border: 3px solid #000000;
+  z-index: 0;
+}
+
+.navlogo {
+  font-family: "MonumentExtended-Ultrabold";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.navimg,
+.cartss,
+.bars,
+.cart,
+.closebtn {
+  width: 2rem;
+}
+
+/* .header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+} */
+
+@media screen and (max-width: 900px) {
+  .navlist {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: #fffff4; 
+     background: #fffff4;
+     border-radius: 0 0 1.5rem 1.5rem;
+     box-shadow: 0 1px 4px hsla(0, 4%, 15%, .1);
+     transition: .4s;
+  }
+}
+
+.navlist {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: .8rem;
+  font-family: 'Poppins';
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.navclose {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
+
+.mobile {
+  top: 0;
+}
+.cartbtns {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  display: inline-flex;
+  font-size: 1rem;
+}
+
+.loginbtt {
+  width: 6rem;
+  height: 2rem;
+  font-family: "MonumentExtended-Ultrabold";
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background: #faff00;
+  border: 3px solid #000000;
+  box-shadow: 6px 7px 0px #000000;
+  border-radius: 12px;
+  justify-content: center;
+}
+
+.ham {
+  align-items: center;
+  display: flex;
+}
+
+@media screen and (max-width: 320px) {
+  .nav {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .loginbtt {
+    width: 5rem;
+    height: 1.8rem;
+    font-size: 0.8rem;
+    box-shadow: 5px 6px 0px #000000;
+  }
+
+}
+
+@media screen and (max-width: 370px) {
+  .navimg {
+    display: none;
+  }
+  .cart {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width: 500px) {
+  .nav {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .loginbtt {
+    width: 6rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+  .navimg,
+  .cartss {
+    width: 2.5rem;
+  }
+  .name {
+    font-size: 1.5rem;
+  }
+}
+
+
+@media screen and (min-width: 900px) {
+  .closebtn{
+    display: none;
+  }
+  .navlist{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  .ham{
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .navlist{
+    gap: 3rem;
+  }
+
+}

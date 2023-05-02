@@ -1,0 +1,167 @@
+.cards {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  background: #23e299;
+  border-width: 0px 3px 3px 3px;
+  border-style: solid;
+  border-color: #000000;
+  padding-bottom: 3rem;
+}
+
+.felx {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  gap: 3rem;
+}
+
+.name {
+  font-family: "MonumentExtended-Ultrabold";
+  font-size: 4rem;
+}
+
+.filter {
+  display: grid;
+  background: #ffffff;
+  border: 3px solid #000000;
+  padding: 1rem;
+  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.filbtn {
+  font-family: "MonumentExtended-Ultrabold";
+  background: #ffffff;
+  border: 3px solid #000000;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.shadow {
+  filter: drop-shadow(9px 8px 0px #000000);
+}
+
+.addbtn {
+  background: #8583ff;
+  border: 3px solid #000000;
+  box-shadow: 7px 7px 0px #000000;
+  border-radius: 20px;
+  font-family: "MonumentExtended-Ultrabold";
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+.card {
+  background: #a06fff;
+  border: 3px solid #000000;
+  box-shadow: 30px 19px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 37px;
+  font-family: "MonumentExtended-Ultrabold";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2rem;
+  padding: 2rem;
+  gap: 0.8rem;
+}
+
+.grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.cardimg {
+  width: 10rem;
+}
+
+@media screen and (max-width: 1300px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .grid {
+    gap: 5rem;
+  }
+  .filbtn {
+    font-size: 1rem;
+  }
+  .cardimg {
+    width: 8rem;
+  }
+
+  .addbtn {
+    border: 2px solid #000000;
+    border-radius: 20px;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .chipname {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .name {
+    font-size: 2.5rem;
+  }
+  .filter {
+    border: 2px solid #000000;
+    padding: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid {
+    gap: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+}
+
+
+@media screen and (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .grid {
+    gap: 4rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .name{
+    font-size:2rem;
+  }
+}
+
+
+@media screen and (max-width: 380px) {
+  .name{
+    font-size:1.5rem;
+  }
+  
+.filbtn {
+  padding: .2rem;
+  font-size: .8rem;
+}
+.addbtn {
+  border: 2px solid #000000;
+  border-radius: 20px;
+  padding: 0.8rem;
+  font-size: .8rem;
+}
+.grid {
+  gap: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+}

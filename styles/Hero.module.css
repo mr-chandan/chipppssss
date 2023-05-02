@@ -1,0 +1,146 @@
+.search,
+.buy {
+  width: 3rem;
+}
+
+.chips {
+  width: 30rem;
+}
+
+.Hero {
+  display: grid;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  background: #40cfe2;
+  border-width: 0px 3px 3px 3px;
+  font-family: "MonumentExtended-Ultrabold";
+  border-style: solid;
+  border-color: #000000;
+}
+
+.grid1 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.btn1 {
+  background: #57ff7c;
+  border: 4px solid #000000;
+  box-shadow: 7px 6px 0px #000000;
+  border-radius: 28px;
+  font-family: "MonumentExtended-Ultrabold";
+  height: 4rem;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.btn2 {
+  background: #dd57ff;
+  border: 4px solid #000000;
+  box-shadow: 7px 6px 0px #000000;
+  border-radius: 28px;
+  font-family: "MonumentExtended-Ultrabold";
+  height: 4rem;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.herobtn {
+  display: flex;
+  gap: 2rem;
+}
+
+.herotxt {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.grid2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .Hero {
+    grid-template-columns: repeat(1, auto);
+  }
+  .grid2 {
+    order: -1;
+    margin-top: 2rem;
+  }
+  .grid1 {
+    padding-bottom: 4rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .chips {
+    width: 20rem;
+  }
+  .herotxt {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .btn1,
+  .btn2 {
+    height: 4rem;
+    width: 10rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .chips {
+    width: 15rem;
+  }
+  .herotxt {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  .grid1{
+    gap: 2rem;
+  }
+  .btn1,
+  .btn2 {
+    height: 3rem;
+    width: 7rem;
+    font-size: 1rem;
+  }
+  .search,
+  .buy {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 420px) {
+    .chips {
+      width: 10rem;
+    }
+    .herotxt {
+      font-size: 1rem;
+      text-align: center;
+    }
+    .grid1{
+      gap: 2rem;
+    }
+    .btn1,
+    .btn2 {
+      height: 2.5rem;
+      width: 6rem;
+      font-size: .8rem;
+    }
+    .search,
+    .buy {
+      display: none;
+    }
+  }

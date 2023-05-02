@@ -1,0 +1,24 @@
+.Footer {
+  background: #e1f953;
+  border-width: 0px 3px 3px 3px;
+  border-style: solid;
+  border-color: #000000;
+  font-family: "MonumentExtended-Ultrabold";
+  font-size: 2rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 405px) {
+  .Footer {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 315px) {
+    .Footer {
+      font-size: 1rem;
+    }
+  }
