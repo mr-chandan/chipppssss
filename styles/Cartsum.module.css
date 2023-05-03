@@ -118,7 +118,7 @@
   width: 20rem;
   background: #ffffff;
   font-family: "Poppins";
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 900;
   color: black;
 }
@@ -225,10 +225,10 @@
 }
 @media screen and (max-width: 300px) {
   .total {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
   .inp {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
   .inp div {
     margin-left: auto;
