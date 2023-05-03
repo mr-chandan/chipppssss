@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
+
 .hero {
   display: flex;
   align-items: center;
@@ -114,6 +116,10 @@
   padding: 1rem;
   border-radius: 0.5rem;
   width: 20rem;
+  background: #ffffff;
+  font-family: "Poppins";
+  font-size: .9rem;
+  font-weight: 900;
 }
 .inp div {
   margin-left: auto;
@@ -129,6 +135,7 @@
   padding: 1rem;
   width: 10rem;
   font-size: 1rem;
+  color: #000000;
 }
 
 @media screen and (max-width: 980px) {
