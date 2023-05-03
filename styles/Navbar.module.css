@@ -38,6 +38,9 @@
   z-index: 10;
 } */
 
+.navclose{
+  color: red;
+}
 @media screen and (max-width: 900px) {
   .navlist {
     position: fixed;
@@ -45,11 +48,11 @@
     left: 0;
     width: 100%;
     padding: 2rem;
-    background: #fffff4; 
-     background: #fffff4;
-     border-radius: 0 0 1.5rem 1.5rem;
-     box-shadow: 0 1px 4px hsla(0, 4%, 15%, .1);
-     transition: .4s;
+    background: #fffff4;
+    background: #fffff4;
+    border-radius: 0 0 1.5rem 1.5rem;
+    box-shadow: 0 1px 4px hsla(0, 4%, 15%, 0.1);
+    transition: 0.4s;
   }
 }
 
@@ -57,8 +60,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  row-gap: .8rem;
-  font-family: 'Poppins';
+  row-gap: 0.8rem;
+  font-family: "Poppins";
   font-size: 1.5rem;
   font-weight: 900;
   color: black;
@@ -69,7 +72,7 @@
   top: 0.5rem;
   right: 1rem;
 }
-.name{
+.name {
   color: black;
 }
 
@@ -117,7 +120,6 @@
     font-size: 0.8rem;
     box-shadow: 5px 6px 0px #000000;
   }
-
 }
 
 @media screen and (max-width: 370px) {
@@ -127,7 +129,6 @@
   .cart {
     display: none;
   }
-
 }
 
 @media screen and (min-width: 500px) {
@@ -150,27 +151,25 @@
   }
 }
 
-
 @media screen and (min-width: 900px) {
-  .closebtn{
+  .closebtn {
     display: none;
   }
-  .navlist{
+  .navlist {
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
     gap: 1.5rem;
   }
-  .ham{
+  .ham {
     display: none;
     visibility: hidden;
   }
 }
 
 @media screen and (min-width: 1250px) {
-  .navlist{
+  .navlist {
     gap: 3rem;
   }
-
 }

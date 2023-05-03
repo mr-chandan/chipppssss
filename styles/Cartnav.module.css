@@ -1,0 +1,85 @@
+.nav {
+  width: 100vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "MonumentExtended-Ultrabold";
+  background: #fffff4;
+  border: 3px solid #000000;
+  font-size: 1.2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.navimg {
+  width: 4rem;
+}
+.navlink {
+  display: flex;
+  gap: 2rem;
+  align-content: center;
+}
+.ham {
+  display: none;
+  width: 2rem;
+}
+.ham img {
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  align-items: center;
+}
+.close2 {
+  width: 2rem;
+  display: none;
+}
+@media screen and (max-width: 750px) {
+  .nav {
+    gap: 1rem;
+  }
+  .ham {
+    display: flex;
+  }
+  .navlink {
+    position: fixed;
+    top: -100%;
+    z-index: 0;
+    background: #fffff4;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    left: 0;
+    border-radius: 0 0 1.5rem 1.5rem;
+    box-shadow: 0 1px 4px hsla(0, 4%, 15%, 0.1);
+    transition: 0.4s;
+    padding: 3rem;
+  }
+  .close2 {
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+.navopen{
+  top: 0%;
+}
+@media screen and (max-width: 750px) {
+  .nav {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+  .navimg {
+    width: 2rem;
+  }
+  .ham img{
+    width: 2rem;
+  }
+}
