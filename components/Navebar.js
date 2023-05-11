@@ -1,10 +1,20 @@
 import Styles from '@/styles/Navbar.module.css'
 import { useState } from 'react'
-
+import Link from 'next/link';
+import { useSession, signIn, signOut } from "next-auth/react"
 
 const Navebar = () => {
     const [login, setlogin] = useState(false)
     const [tick, settick] = useState(false)
+
+    const { data: session } = useSession()
+
+    // if (session) {
+
+    //         Signed in as {session.user.email} <br />
+    //         <button onClick={() => signOut()}>Sign out</button>
+
+    // }
 
     return (
         <header className={Styles.header}>
@@ -17,7 +27,8 @@ const Navebar = () => {
                     <div>Products</div>
                     <div>Contact</div>
                     <div>Help</div>
-                    <div>Join</div>
+                    {!session?.user?.email && <div onClick={() => signIn()}>Login</div>}
+                    {session?.user?.email && <div onClick={() => signOut()}>Logout</div>}
                     <div className={Styles.navclose} onClick={() => settick(!tick)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={Styles.closebtn}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -26,7 +37,13 @@ const Navebar = () => {
                 </div>
                 <div className={Styles.cartbtns}>
                     {login && <button className={Styles.loginbtt}>Login</button>}
-                    {!login && <div className={Styles.loginbtt}>Cart<img className={Styles.cart} src='cart.png'></img></div>}
+                    {!login &&
+                        <Link href="/cart">
+                            <div className={Styles.loginbtt}>
+                                Cart<img className={Styles.cart} src='cart.png'></img>
+                            </div>
+                        </Link>
+                    }
 
                     <div className={Styles.ham} onClick={() => settick(!tick)}><img className={Styles.cartss} src='bars.png'></img></div>
                 </div>
