@@ -1,10 +1,33 @@
-import Styles from '@/styles/Cartsum.module.css'
+import Styles from '@/styles/Cartsum.module.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Cartsum = () => {
+    
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        ch()
+    }, []);
+
+    async function ch() {
+        const storedCartItems = JSON.parse(window.sessionStorage.getItem('cartItems'));
+        if (storedCartItems) {
+            console.log(storedCartItems)
+        }
+        await axios.post("/api/home").then((res) => {
+            setProducts(res.data);
+        });
+    }
+
+
     return (
         <div className={Styles.hero}>
             <div className={Styles.name}>Cart</div>
             <div className={Styles.namesum}>Order Summery</div>
+
+
+
             <div className={Styles.grid}>
                 <div className={Styles.card}>
                     <img src='packetchips.png' className={Styles.cardimg} />

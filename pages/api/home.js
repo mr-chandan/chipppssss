@@ -10,19 +10,26 @@ export default async function handle(req, res) {
     res.json(await Products.find());
   }
 
+
+  if (method === "POST") {
+    // const { name, parentcategory, properties } = req.body;
+    // const categorydoc = await Category.create({
+    //   name,
+    //   parent: parentcategory || undefined,
+    //   properties,
+    // });
+    res.json("ji");
+  }
+
+
+
+
+
 }
 
 
 
-// if (method === "POST") {
-//   const { name, parentcategory, properties } = req.body;
-//   const categorydoc = await Category.create({
-//     name,
-//     parent: parentcategory || undefined,
-//     properties,
-//   });
-//   res.json(categorydoc);
-// }
+
 
 // if (method === "PUT") {
 //   const { name, parentcategory, _id, properties } = req.body;

@@ -20,12 +20,14 @@ const Chipss = () => {
         const updatedCartItems = [...cartItems, product];
         sessionStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
         setCartItems(updatedCartItems);
+        console.log(sessionStorage.getItem('cartItems'))
     };
 
     const handleRemoveFromCart = (id) => {
         const updatedCartItems = cartItems.filter(item => item !== id);
         sessionStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
         setCartItems(updatedCartItems);
+        console.log(sessionStorage.getItem('cartItems'))
     };
 
     return (
