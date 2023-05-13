@@ -10,35 +10,23 @@ export default async function handle(req, res) {
     res.json(await Products.find());
   }
 
-
   if (method === "POST") {
-    // const { name, parentcategory, properties } = req.body;
-    // const categorydoc = await Category.create({
-    //   name,
-    //   parent: parentcategory || undefined,
-    //   properties,
-    // });
-    res.json("ji");
+    const { storedCartItems } = req.body;
+
+    try {
+      const products = await Products.find({ _id: { $in: storedCartItems } });
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to retrieve product data" });
+    }
   }
-
-
-
-
-
 }
 
 
 
 
 
-// if (method === "PUT") {
-//   const { name, parentcategory, _id, properties } = req.body;
-//   const categorydoc = await Category.updateOne(
-//     { _id },
-//     { name, parent: parentcategory, properties }
-//   );
-//   res.json(categorydoc);
-// }
+
 
 // if (method === "DELETE") {
 //   const { _id } = req.query;

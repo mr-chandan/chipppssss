@@ -3,16 +3,20 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 const Chipss = () => {
-    const [products, setproducts] = useState("")
+    const [products, setProducts] = useState("");
     const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
-        ch()
+        ch();
     }, []);
 
     async function ch() {
         await axios.get("/api/home").then((res) => {
-            setproducts(res.data);
+            setProducts(res.data);
+            const storedCartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+            if (storedCartItems) {
+                setCartItems(storedCartItems);
+            }
         });
     }
 
@@ -20,15 +24,16 @@ const Chipss = () => {
         const updatedCartItems = [...cartItems, product];
         sessionStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
         setCartItems(updatedCartItems);
-        console.log(sessionStorage.getItem('cartItems'))
+        console.log(sessionStorage.getItem('cartItems'));
     };
 
     const handleRemoveFromCart = (id) => {
         const updatedCartItems = cartItems.filter(item => item !== id);
         sessionStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
         setCartItems(updatedCartItems);
-        console.log(sessionStorage.getItem('cartItems'))
+        console.log(sessionStorage.getItem('cartItems'));
     };
+
 
     return (
         <div>

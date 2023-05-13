@@ -139,6 +139,19 @@
   color: #000000;
 }
 
+.noitem {
+  font: 400;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15vh;
+}
+
+.noitem img {
+  width: 15rem;
+}
+
 @media screen and (max-width: 980px) {
   .grid {
     gap: 5rem;
@@ -242,5 +255,12 @@
   }
   .btn {
     width: 10rem;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .noitem img {
+    display: none;
+    font-size: 2rem;
   }
 }

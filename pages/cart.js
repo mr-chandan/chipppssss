@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Cartnav from  '@/components/Cartnav'
 import Cartsum from '@/components/Cartsum'
+import Script from 'next/script'
 
 export default function Cart() {
   return (
@@ -13,6 +14,7 @@ export default function Cart() {
       </Head>
       <Cartnav/>
       <Cartsum/>
+      <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
     </>
   )
 }

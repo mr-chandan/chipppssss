@@ -1,10 +1,13 @@
 import Styles from '@/styles/Cartsum.module.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSession, signIn } from 'next-auth/react';
+
 
 const Cartsum = () => {
-    
+
     const [products, setProducts] = useState([]);
+    const { data: session } = useSession();
 
     useEffect(() => {
         ch()
@@ -13,12 +16,56 @@ const Cartsum = () => {
     async function ch() {
         const storedCartItems = JSON.parse(window.sessionStorage.getItem('cartItems'));
         if (storedCartItems) {
-            console.log(storedCartItems)
+            await axios.post("/api/home", { storedCartItems }).then((res) => {
+                setProducts(res.data);
+            });
         }
-        await axios.post("/api/home").then((res) => {
-            setProducts(res.data);
-        });
     }
+
+    const calculateTotalAmount = () => {
+        let total = 0;
+        products.forEach((product) => {
+            total += product.Price;
+        });
+        return total;
+    };
+
+    async function handleButtonClick() {
+        if (session) {
+            const { data } = await axios.post("/api/orders")
+            console.log(data)
+
+
+            var options = {
+                "key": process.env.KeyId,
+                "amount": "50000",
+                "currency": "INR",
+                "name": "Jai Shree Ram",
+                "description": "Test Transaction",
+                "image": "",
+                "order_id": data.id,
+                "callback_url": "http://localhost:3000/cart",
+                "prefill": {
+                    "name": "Gaurav Kumar",
+                    "email": "gaurav.kumar@example.com",
+                    "contact": "9000090000"
+                },
+                "notes": {
+                    "address": "Razorpay Corporate Office"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var razorpayObject = new window.Razorpay(options);
+            razorpayObject.open();
+            razorpayObject.on('payment.success', function (response) {
+                alert(response)
+            })
+        } else {
+            signIn();
+        }
+    };
 
 
     return (
@@ -28,94 +75,40 @@ const Cartsum = () => {
 
 
 
-            <div className={Styles.grid}>
-                <div className={Styles.card}>
-                    <img src='packetchips.png' className={Styles.cardimg} />
-                    <div className={Styles.chipsname}>
-                        Chaps
-                    </div>
+            {products.length === 0 ? (
+                <div className={Styles.noitem}>Add items to cart
+                    <img src='cart.png'></img>
                 </div>
-                <div className={Styles.inc}>
-                    <div className={Styles.plus}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                    </div>
-                    <div className={Styles.boxnum}>
-                        30
-                    </div>
-                    <div className={Styles.plus}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
-                        </svg>
-                    </div>
-                </div>
-                <div className={Styles.amt}>
-                    <div>100rs</div>
-                </div>
-            </div>
-            <div className={Styles.grid}>
-                <div className={Styles.card}>
-                    <img src='packetchips.png' className={Styles.cardimg} />
-                    <div className={Styles.chipsname}>
-                        Chaps
-                    </div>
-                </div>
-                <div className={Styles.inc}>
-                    <div className={Styles.plus}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                    </div>
-                    <div className={Styles.boxnum}>
-                        30
-                    </div>
-                    <div className={Styles.plus}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
-                        </svg>
-                    </div>
-                </div>
-                <div className={Styles.amt}>
-                    <div>100rs</div>
-                </div>
-            </div>
-            <div className={Styles.grid}>
-                <div className={Styles.card}>
-                    <img src='packetchips.png' className={Styles.cardimg} />
-                    <div className={Styles.chipsname}>
-                        Chaps
-                    </div>
-                </div>
-                <div className={Styles.inc}>
-                    <div className={Styles.plus}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                    </div>
-                    <div className={Styles.boxnum}>
-                        30
-                    </div>
-                    <div className={Styles.plus}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
-                        </svg>
-                    </div>
-                </div>
-                <div className={Styles.amt}>
-                    <div>100rs</div>
-                </div>
-            </div>
+            ) : (
 
+                products.map((product) => (
+                    <div className={Styles.grid} key={product._id}>
+                        <div className={Styles.card}>
+                            <img src={product.imageurl} className={Styles.cardimg} />
+                            <div className={Styles.chipsname}>
+                                {product.Productname}
+                            </div>
+                        </div>
+                        <div className={Styles.inc}>
+                            <div className={Styles.boxnum}>
+                                Quantity : 1
+                            </div>
+                        </div>
+                        <div className={Styles.amt}>
+                            <div>Price : {product.Price}rs</div>
+                        </div>
+                    </div>
+                ))
+            )}
 
             <div className={Styles.total}>
 
                 <div className={Styles.tot}>
-                    Total Amount =
+                    Total Amount
                 </div>
 
                 <div className={Styles.totrs}>
-                    900rs
+                    {calculateTotalAmount()}rs
                 </div>
             </div>
             <div className={Styles.input}>
@@ -123,10 +116,8 @@ const Cartsum = () => {
                 <div className={Styles.inp}>
                     <div><label>First Name</label> <input type="text" /></div>
                     <div><label>Address</label> <input type="text" /></div>
-                    <div><button className={Styles.btn}>Submit</button></div>
+                    <div><button className={Styles.btn} onClick={handleButtonClick}>Submit</button></div>
                 </div>
-
-
             </div>
         </div>
     )
