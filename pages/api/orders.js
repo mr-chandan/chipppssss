@@ -40,18 +40,18 @@ export default async function handle(req, res) {
 
         if (expectedSignature === razorpay_signature) {
 
-            const { amount, contactno, address } = req.body;
+            const { amount, contactno, address, email } = req.body;
             const Order = await Orders.create({
                 razorpay_order_id,
                 razorpay_payment_id,
                 razorpay_signature,
                 amount,
                 contactno,
-                address
+                email,
+                address,
             });
             res.json(Order);
         }
-
 
     };
 }

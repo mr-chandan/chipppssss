@@ -1,0 +1,35 @@
+.main {
+  min-height: 100vh;
+  background: #a06fff;
+  border: 3px solid #000000;
+  border-top: none;
+  font-family: "MonumentExtended-Ultrabold";
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  outline: 3px solid black;
+  background: #23e299;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.box1 img{
+width: 5rem;
+}
+
+@media screen and (max-width: 1050px) {
+.box1{
+  display: none;
+}
+.box{
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+}

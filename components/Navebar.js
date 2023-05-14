@@ -2,11 +2,12 @@ import Styles from '@/styles/Navbar.module.css'
 import { useState } from 'react'
 import Link from 'next/link';
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from 'next/router';
 
 const Navebar = () => {
     const [login, setlogin] = useState(false)
     const [tick, settick] = useState(false)
-
+    const router = useRouter();
     const { data: session } = useSession()
 
     // if (session) {
@@ -15,18 +16,24 @@ const Navebar = () => {
     //         <button onClick={() => signOut()}>Sign out</button>
 
     // }
+    const redirectToHome = () => {
+        router.push('/');
+    };
 
+    const orders = () => {
+        router.push('/orders')
+    }
     return (
         <header className={Styles.header}>
             <nav className={Styles.nav}>
-                <div className={Styles.navlogo}>
+                <div className={Styles.navlogo} onClick={redirectToHome}>
                     <img className={Styles.navimg} src='chips.png' />
                     <div className={Styles.name}>My Chip</div>
                 </div>
                 <div className={`${Styles.navlist} ${tick && Styles.mobile}`}>
                     <div>Products</div>
                     <div>Contact</div>
-                    <div>Help</div>
+                    <div onClick={orders}>Orders</div>
                     {!session?.user?.email && <div onClick={() => signIn()}>Login</div>}
                     {session?.user?.email && <div onClick={() => signOut()}>Logout</div>}
                     <div className={Styles.navclose} onClick={() => settick(!tick)}>

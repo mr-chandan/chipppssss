@@ -2,18 +2,21 @@ import Styles from '@/styles/Cartsum.module.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSession, signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 
 const Cartsum = () => {
 
     const [products, setProducts] = useState([]);
+    const [btclic, setbtclic] = useState(false);
     const [contactno, setcontactno] = useState("");
     const [address, setaddress] = useState("");
     const { data: session } = useSession();
+    const router = useRouter();
     useEffect(() => {
         ch()
     }, []);
-    console.log(session)
+
     async function ch() {
         const storedCartItems = JSON.parse(window.sessionStorage.getItem('cartItems'));
         if (storedCartItems) {
@@ -37,8 +40,10 @@ const Cartsum = () => {
     };
 
     async function handleButtonClick() {
-        if (!contactno && !address)
+        if (!contactno && !address) {
+            setbtclic(true)
             return
+        }
         if (session) {
             const totalAmount = calculateTotalAmount();
             const { data } = await axios.post("/api/orders", { totalAmount })
@@ -52,7 +57,6 @@ const Cartsum = () => {
                 "description": "My Chip",
                 "image": "",
                 "order_id": data.id,
-                "callback_url": "http://localhost:3000/cart",
                 "prefill": {
                     "name": `${session?.user?.name}`,
                     "email": `${session?.user?.email}`,
@@ -66,9 +70,12 @@ const Cartsum = () => {
                 },
                 "handler": function (response) {
                     var amount = data.amount
-                    axios.put('/api/orders', { response, amount, contactno, address })
+                    var email = session?.user?.email
+                    axios.put('/api/orders', { response, amount, contactno, address, email })
                         .then(function (res) {
                             console.log('Callback response:', res.data);
+                            window.sessionStorage.removeItem('cartItems');
+                            router.push('/orders');
                         })
                         .catch(function (error) {
                             console.error('Callback error:', error);
@@ -128,7 +135,13 @@ const Cartsum = () => {
             <div className={Styles.input}>
 
                 <div className={Styles.inp}>
+                    {btclic && contactno.length === 0 && (
+                        <div className={Styles.smalltext}>Please enter the contact no</div>
+                    )}
                     <div><label>contact no</label> <input type="text" value={contactno} onChange={handleInputChange} placeholder='Contact no' /></div>
+                    {btclic && address.length === 0 && (
+                        <div className={Styles.smalltext}>Please enter the address</div>
+                    )}
                     <div><label>Address</label> <input type="text" value={address} onChange={e => setaddress(e.target.value)} placeholder='Address' /></div>
                     <div><button className={Styles.btn} onClick={handleButtonClick}>Submit</button></div>
                 </div>

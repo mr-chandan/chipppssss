@@ -20,6 +20,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  cursor: pointer;
 }
 
 .navimg,
@@ -62,6 +63,7 @@
   font-size: 1.5rem;
   font-weight: 500;
   color: black;
+  cursor: pointer;
 }
 
 .navclose {

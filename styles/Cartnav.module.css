@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
 }
 .navimg {
   width: 4rem;
@@ -23,6 +24,7 @@
   display: flex;
   gap: 2rem;
   align-content: center;
+  cursor: pointer;
 }
 .ham {
   display: none;

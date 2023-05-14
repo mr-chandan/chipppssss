@@ -65,6 +65,12 @@
   gap: 3rem;
 }
 
+.smalltext{
+  font-size: 1rem;
+  font-family: "Poppins";
+  font-weight: 800;
+  color: rgb(255, 0, 0);
+}
 .inc .plus {
   background: #ffffff;
   border: 3px solid #000000;

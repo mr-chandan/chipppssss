@@ -7,6 +7,7 @@ const orderSchema = new Schema({
     amount: { type: Number, required: true },
     contactno: { type: Number },
     address: { type: String },
+    email: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
 });
 
