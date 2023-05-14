@@ -13,7 +13,7 @@ const Cartsum = () => {
     useEffect(() => {
         ch()
     }, []);
-
+    console.log(session)
     async function ch() {
         const storedCartItems = JSON.parse(window.sessionStorage.getItem('cartItems'));
         if (storedCartItems) {
@@ -37,8 +37,8 @@ const Cartsum = () => {
     };
 
     async function handleButtonClick() {
-        // if (!contactno && !address)
-        //     return
+        if (!contactno && !address)
+            return
         if (session) {
             const totalAmount = calculateTotalAmount();
             const { data } = await axios.post("/api/orders", { totalAmount })
