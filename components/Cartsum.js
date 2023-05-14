@@ -7,8 +7,9 @@ import { useSession, signIn } from 'next-auth/react';
 const Cartsum = () => {
 
     const [products, setProducts] = useState([]);
+    const [contactno, setcontactno] = useState("");
+    const [address, setaddress] = useState("");
     const { data: session } = useSession();
-
     useEffect(() => {
         ch()
     }, []);
@@ -21,7 +22,12 @@ const Cartsum = () => {
             });
         }
     }
-
+    function handleInputChange(event) {
+        let inputValue = event.target.value;
+        inputValue = inputValue.replace(/\D/g, '');
+        inputValue = inputValue.slice(0, 10);
+        setcontactno(inputValue);
+    }
     const calculateTotalAmount = () => {
         let total = 0;
         products.forEach((product) => {
@@ -31,42 +37,50 @@ const Cartsum = () => {
     };
 
     async function handleButtonClick() {
+        // if (!contactno && !address)
+        //     return
         if (session) {
-            const { data } = await axios.post("/api/orders")
+            const totalAmount = calculateTotalAmount();
+            const { data } = await axios.post("/api/orders", { totalAmount })
             console.log(data)
-
 
             var options = {
                 "key": process.env.KeyId,
-                "amount": "50000",
+                "amount": data.amount,
                 "currency": "INR",
-                "name": "Jai Shree Ram",
-                "description": "Test Transaction",
+                "name": "My chip",
+                "description": "My Chip",
                 "image": "",
                 "order_id": data.id,
                 "callback_url": "http://localhost:3000/cart",
                 "prefill": {
-                    "name": "Gaurav Kumar",
-                    "email": "gaurav.kumar@example.com",
-                    "contact": "9000090000"
+                    "name": `${session?.user?.name}`,
+                    "email": `${session?.user?.email}`,
+                    "contact": `${contactno}`
                 },
                 "notes": {
                     "address": "Razorpay Corporate Office"
                 },
                 "theme": {
                     "color": "#3399cc"
+                },
+                "handler": function (response) {
+                    var amount = data.amount
+                    axios.put('/api/orders', { response, amount, contactno, address })
+                        .then(function (res) {
+                            console.log('Callback response:', res.data);
+                        })
+                        .catch(function (error) {
+                            console.error('Callback error:', error);
+                        });
                 }
             };
             var razorpayObject = new window.Razorpay(options);
             razorpayObject.open();
-            razorpayObject.on('payment.success', function (response) {
-                alert(response)
-            })
         } else {
             signIn();
         }
     };
-
 
     return (
         <div className={Styles.hero}>
@@ -114,8 +128,8 @@ const Cartsum = () => {
             <div className={Styles.input}>
 
                 <div className={Styles.inp}>
-                    <div><label>First Name</label> <input type="text" /></div>
-                    <div><label>Address</label> <input type="text" /></div>
+                    <div><label>contact no</label> <input type="text" value={contactno} onChange={handleInputChange} placeholder='Contact no' /></div>
+                    <div><label>Address</label> <input type="text" value={address} onChange={e => setaddress(e.target.value)} placeholder='Address' /></div>
                     <div><button className={Styles.btn} onClick={handleButtonClick}>Submit</button></div>
                 </div>
             </div>
