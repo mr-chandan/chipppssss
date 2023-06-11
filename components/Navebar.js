@@ -34,7 +34,7 @@ const Navebar = () => {
                     <div>Products</div>
                     <div>Contact</div>
                     <div onClick={orders}>Orders</div>
-                    {!session?.user?.email && <div onClick={() => signIn()}>Login</div>}
+                    {!session?.user?.email && <div onClick={() => signIn('google')}>Login</div>}
                     {session?.user?.email && <div onClick={() => signOut()}>Logout</div>}
                     <div className={Styles.navclose} onClick={() => settick(!tick)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={Styles.closebtn}>
